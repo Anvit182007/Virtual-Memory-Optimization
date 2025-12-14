@@ -1,6 +1,6 @@
 # Virtual Memory Management Simulator
 
-This project simulates basic virtual memory management techniques such as:
+A C++ program to simulate virtual memory management concepts such as:
 - Segmentation
 - Paging
 - Page replacement algorithms

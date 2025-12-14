@@ -149,6 +149,43 @@ public:
     }
 };
 
+/******************************
+     MEMORY FRAGMENTATION
+*******************************/
+class Fragmentation {
+public:
+    void simulate() {
+        int memorySize;
+        cout << "Enter total memory size: ";
+        cin >> memorySize;
+
+        int processCount;
+        cout << "Enter number of processes: ";
+        cin >> processCount;
+
+        vector<int> process(processCount);
+        for(int i = 0; i < processCount; i++) {
+            cout << "Enter size of process " << i << ": ";
+            cin >> process[i];
+        }
+
+        int used = 0;
+        for(int i = 0; i < processCount;
+            i++) {
+            if(used + process[i] <= memorySize) {
+                used += process[i];
+                cout << "Process " << i << " allocated.\n";
+            } else {
+                cout << "Process " << i << " not allocated (fragmentation)!\n";
+            }
+        }
+
+        cout << "\nInternal Fragmentation = " 
+             << memorySize - used << " units\n";
+    }
+};
+
+
 
 int main()
 {
@@ -201,6 +238,11 @@ int main()
                 faults = p.Optimal(pages);
 
             cout << "\nTotal Page Faults = " << faults << "\n";
+        }
+
+        else if(choice == 3) {
+            Fragmentation f;
+            f.simulate();
         }
 
         else if (choice == 4)
